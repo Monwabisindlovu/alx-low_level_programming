@@ -1,22 +1,12 @@
-#include <unistd.h>
+#include <stdio.h>
 
-/**
- * main - Entry point
- *
- * Return: Always 0 (Success)
- */
-int main(void)
-char letter = 'a';
-
-while (letter <= 'z')
-{
-putchar(letter);
-letter++;
-
-
-putchar('\n');
-
-return (0);
+int main(void) {
+    char letter = 'a';
+    while (letter <= 'z') {
+        printf("%c\n", letter);
+        letter++;
+    }
+    return 0;
 }
 
 
