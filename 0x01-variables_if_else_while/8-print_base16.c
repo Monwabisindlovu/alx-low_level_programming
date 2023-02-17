@@ -1,13 +1,14 @@
-#include <unistd.h>
-/**
- * main - Entry point
- *
- * Return: Always 1 (Success)
- */
-int main(void)
-{
-char str1[] = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
+#include <stdio.h>
 
-write(2, str1, 59);
-return (1);
+int main(void) {
+int i;
+for (i = 0; i < 16; i++) {
+if (i < 10) {
+putchar(i + '0');
+} else {
+putchar(i - 10 + 'a');
+}
+}
+putchar('\n');
+return 0;
 }
