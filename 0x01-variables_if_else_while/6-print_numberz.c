@@ -7,16 +7,12 @@
  */
 int main(void)
 {
-int digit = 0;
+int num;
 
-while (digit < 10)
+for (num = 0; num < 10; num++)
 {
-putchar(digit / 10 + '0');
-putchar(digit % 10 + '0');
-digit++;
+putchar(num + '0');
 }
-
 putchar('\n');
-
 return (0);
 }
