@@ -7,19 +7,19 @@
  */
 int main(void)
 {
-    char letter = 'a';
+char letter = 'a';
 
-    while (letter <= 'z')
-    {
-        if (letter != 'e' && letter != 'q')
-        {
-            putchar(letter);
-        }
+while (letter <= 'z')
+{
+if (letter != 'e' && letter != 'q')
+{
+putchar(letter);
+}
 
-        letter++;
-    }
+letter++;
+}
 
-    putchar('\n');
+putchar('\n');
 
-    return (0);
+return (0);
 }
