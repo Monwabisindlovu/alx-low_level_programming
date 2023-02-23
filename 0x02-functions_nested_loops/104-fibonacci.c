@@ -1,29 +1,33 @@
 #include <stdio.h>
 
 /**
- * main - Finds the sum of the even-valued terms in the Fibonacci sequence
- * whose values do not exceed 4,000,000
+ * main - prints the first 98 Fibonacci numbers
  *
- * Return: Always 0 (Success)
+ * Return: Always 0
  */
+
 int main(void)
 {
 int i;
-long int a = 1, b = 2, c, sum = 2;
+unsigned long int a = 1, b = 2, c;
 
-for (i = 3; i <= 33; i++)
+printf("%lu, %lu, ", a, b);
+
+for (i = 3; i <= 98; i++)
 {
 c = a + b;
+printf("%lu", c);
+
+if (i != 98)
+{
+printf(", ");
+}
+
 a = b;
 b = c;
-
-if (c % 2 == 0)
-{
-sum += c;
-}
 }
 
-printf("%ld\n", sum);
+printf("\n");
 
 return (0);
 }
