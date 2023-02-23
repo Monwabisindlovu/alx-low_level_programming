@@ -1,26 +1,18 @@
-#include "holberton.h"
-#include <stdlib.h>
+#include "main.h"
 
 /**
- * main - entry point
- *
- * Return: EXIT_SUCCESS on success
+ * print_last_digit - print the last digit of a number
+ * @n: The number to be treated
+ * Return: value of the last digit of a number
  */
-int main(void)
+int print_last_digit(int n)
 {
-int r;
-
-r = print_last_digit(98);
-_putchar('0' + r);
-_putchar('\n');
-
-r = print_last_digit(0);
-_putchar('0' + r);
-_putchar('\n');
-
-r = print_last_digit(-98);
-_putchar('0' + r);
-_putchar('\n');
-
-return (EXIT_SUCCESS);
+int last;
+last = n % 10;
+if (last < 0)
+{
+last = last * -1;
+}
+_putchar(last + '0');
+return(last);
 }
