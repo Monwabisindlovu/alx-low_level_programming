@@ -33,7 +33,7 @@ else
 if (month == 2 && day == 29)
 {
 printf("Invalid date: %02d/%02d/%04d\n", month, day, year);
-}        
+}
 else
 {
 /* Print day of the year and remaining days */
