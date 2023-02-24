@@ -1,26 +1,29 @@
 #include "main.h"
 
 /**
- * print_line - Draws a straight line in the terminal
- * @n: The number of times the character _ should be printed
+ * print_square - prints a square of a given size
+ * @size: size of the square
  *
  * Return: void
  */
-void print_line(int n)
+
+void print_square(int size)
 {
-if (n <= 0)
+if (size <= 0)
 {
 _putchar('\n');
 }
 else
 {
-int i;
+int i, j;
 
-for (i = 0; i < n; i++)
+for (i = 1; i <= size; i++)
 {
-_putchar('_');
+for (j = 1; j <= size; j++)
+{
+_putchar('#');
 }
-
 _putchar('\n');
+}
 }
 }
