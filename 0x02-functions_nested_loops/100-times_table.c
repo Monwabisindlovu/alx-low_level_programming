@@ -1,34 +1,31 @@
-#include "holberton.h"
 #include <stdio.h>
+#include "main.h"
 
 /**
- * print_times_table - prints the n times table
- * @n: the number of times tables to print
- *
- * Return: void
+ * print_times_table - prints the n times table, starting with 0.
+ * @n: the number of the times table to print.
  */
 void print_times_table(int n)
 {
-int i, j, result;
+int i, j, product;
 
-if (n < 0 || n > 15)
-return;
-
+if (n >= 0 && n <= 15)
+{
 for (i = 0; i <= n; i++)
 {
 for (j = 0; j <= n; j++)
 {
-result = i * j;
-
+product = i * j;
 if (j == 0)
-printf("%d", result);
-else if (result < 10)
-printf("   %d", result);
-else if (result < 100)
-printf("  %d", result);
+printf("%d", product);
+else if (product < 10)
+printf("   %d", product);
+else if (product < 100)
+printf("  %d", product);
 else
-printf(" %d", result);
+printf(" %d", product);
 }
 printf("\n");
+}
 }
 }
