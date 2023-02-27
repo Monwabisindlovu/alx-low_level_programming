@@ -5,7 +5,7 @@
  * rev_string - Reverses a string
  * @s: String to reverse
  */
- 
+
 void rev_string(char *s)
 {
 int length = 0;
