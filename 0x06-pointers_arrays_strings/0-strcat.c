@@ -15,7 +15,7 @@ int i, j;
 while (dest[i] != '\0')
 i++;
 
-while (src[j] != '\0') 
+while (src[j] != '\0')
 {
 dest[i] = src[j];
 i++;
