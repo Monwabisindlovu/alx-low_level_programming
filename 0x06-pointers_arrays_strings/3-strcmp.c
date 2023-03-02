@@ -1,26 +1,25 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
- * _strncpy - copies a string
- * @dest: destination string
- * @src: source string
- * @n: maximum number of characters to copy
+ * _strcmp - compare two strings
+ * @s1: first string
+ * @s2: second string
  *
- * Return: pointer to dest
+ * Return: integer less than, equal to, or greater than zero if s1 is found,
+ * respectively, to be less than, to match, or be greater than s2
  */
-char *_strncpy(char *dest, char *src, int n)
+int _strcmp(char *s1, char *s2)
 {
 int i;
 
-for (i = 0; i < n && src[i] != '\0'; i++)
+for (i = 0; s1[i] != '\0' && s2[i] != '\0'; i++)
 {
-dest[i] = src[i];
+if (s1[i] != s2[i])
+{
+return (s1[i] - s2[i]);
+}
 }
 
-for (; i < n; i++)
-{
-dest[i] = '\0';
-}
-
-return (dest);
+return (s1[i] - s2[i]);
 }
