@@ -2,9 +2,10 @@
 #include <stdio.h>
 
 /**
- * main - check the code for
+ * leet - encodes a string into 1337
+ * @str: string to be encoded
  *
- * Return: Always 0.
+ * Return: the encoded string
  */
 
 char *leet(char *str)
