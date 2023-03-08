@@ -1,49 +1,32 @@
 #include "main.h"
 
 /**
- * find_sqrt - Recursively searches for the natural square root of a number.
- * @n: The number to find the square root of.
- * @start: The starting value for the binary search.
- * @end: The ending value for the binary search.
+ * calculate_sqrt - Calculates the square root of a number using recursion
  *
- * Return: The natural square root of n if it exists, or -1 if it does not.
+ * @n: number to calculate square root of
+ * @i: integer to check as a possible square root
+ *
+ * Return: square root of @n or -1 if it doesn't exist
  */
-int find_sqrt(int n, int start, int end)
+int calculate_sqrt(int n, int i)
 {
-if (start <= end)
-{
-int mid = (start + end) / 2;
-int square = mid * mid;
-
-if (square == n)
-{
-return (mid);
-}
-else if (square > n)
-{
-return (find_sqrt(n, start, mid - 1));
-}
-else
-{
-return (find_sqrt(n, mid + 1, end));
-}
-}
-
+if (i * i == n)
+return (i);
+else if (i * i > n)
 return (-1);
+return (calculate_sqrt(n, i + 1));
 }
 
 /**
- * _sqrt_recursion - Returns the natural square root of a number.
- * @n: The number to find the square root of.
+ * _sqrt_recursion - Returns the natural square root of a number
  *
- * Return: The natural square root of n if it exists, or -1 if it does not.
+ * @n: number to calculate square root of
+ *
+ * Return: square root of @n or -1 if it doesn't exist
  */
 int _sqrt_recursion(int n)
 {
 if (n < 0)
-{
 return (-1);
-}
-
-return (find_sqrt(n, 0, n));
+return (calculate_sqrt(n, 0));
 }
