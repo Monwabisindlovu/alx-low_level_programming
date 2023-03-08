@@ -3,16 +3,18 @@
 /**
  * _print_rev_recursion - prints a string in reverse using recursion
  *
- * @s: the string to print
+ * @s: The string to print
+ *
+ * Return: void
  */
-
-int _putchar(char c);
 void _print_rev_recursion(char *s)
 {
-if (*s == '\0') /* base case: end of string */
+if (*s == '\0') /* Base case: end of string */
 return;
 
-_print_rev_recursion(s + 1); /* recursive call with next character */
+/* Recursive call with next character */
+_print_rev_recursion(s + 1);
 
-_putchar(*s); /* print current character */
+/* Print current character */
+_putchar(*s);
 }
