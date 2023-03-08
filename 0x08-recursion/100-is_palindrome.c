@@ -1,26 +1,5 @@
 #include "main.h"
-
-/**
- * palindrome_helper - checks if a string is a palindrome (helper function)
- * @s: the string to check
- * @start: the starting index of the current substring to check
- * @end: the ending index of the current substring to check
- *
- * Return: 1 if the string is a palindrome, 0 otherwise
- */
-int palindrome_helper(char *s, int start, int end)
-{
-/* Base case: substring has length 0 or 1 */
-if (start >= end)
-return (1);
-
-/* Recursive case: check if the first and last characters match */
-if (s[start] == s[end])
-return (palindrome_helper(s, start + 1, end - 1));
-
-/* Characters don't match, not a palindrome */
-return (0);
-}
+#include <stdio.h>
 
 /**
  * is_palindrome - checks if a string is a palindrome
@@ -30,11 +9,39 @@ return (0);
  */
 int is_palindrome(char *s)
 {
-int len = 0;
+int len = 0, i;
 
-/* Find the length of the string */
-while (*(s + len))
+if (*s == '\0')
+return (1);
+
+while (s[len] != '\0')
 len++;
 
-return (palindrome_helper(s, 0, len - 1));
+for (i = 0; i < len / 2; i++)
+{
+if (s[i] != s[len - 1 - i])
+return (0);
+}
+
+return (1);
+}
+
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+int r;
+
+r = is_palindrome("level");
+printf("%d\n", r);
+r = is_palindrome("redder");
+printf("%d\n", r);
+r = is_palindrome("test");
+printf("%d\n", r);
+r = is_palindrome("step on no pets");
+printf("%d\n", r);
+return (0);
 }
