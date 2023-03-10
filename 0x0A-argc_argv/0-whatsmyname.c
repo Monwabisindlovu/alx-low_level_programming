@@ -1,27 +1,18 @@
 #include <stdio.h>
+#include "main.h"
 
 /**
- * unused_function - Prints a message indicating that the function does nothing
- * @unused_parameter: An unused parameter
+ * main - prints the name of the program
+ * @argc: number of arguments
+ * @argv: array of arguments
  *
- * Return: None
+ * Return: Always 0 (Success)
  */
-void unused_function(int unused_parameter)
-{
-(void) unused_parameter; /* Mark the parameter as unused */
-printf("This function does nothing!\n");
-}
 
-/**
- * main - Entry point of the program
- *
- * Return: Always 0 (success)
- */
-int main(void)
+int main(int argc __attribute__((unused)), char *argv[])
 {
-int unused_variable;
-(void) unused_variable; /* Mark the variable as unused */
-printf("Hello, world!\n");
+printf("%s\n", *argv);
 
 return (0);
 }
+
