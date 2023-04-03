@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <stddef.h>
 
+
 /* Structures */
 /**
  * struct list_s - singly linked list
@@ -24,6 +25,7 @@ typedef struct listint_s
 } listint_t;
 
 /* Function prototypes */
+listint_t *add_nodeint(listint_t **head, const int n);
 size_t print_listint(const listint_t *h);
 size_t listint_len(const listint_t *h);
 listint_t *add_nodeint(listint_t **head, const int n);
