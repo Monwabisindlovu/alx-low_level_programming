@@ -27,5 +27,5 @@ exit(98);
 
 node = next_node;
 }
-return count;
+return (count);
 }
