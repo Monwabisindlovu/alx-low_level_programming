@@ -1,51 +1,54 @@
 #include <stdlib.h>
-#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include "main.h"
 
 /**
- * function - a function that reads a text file and  prints it to the POSIX standard output
+ * read_textfile - reads a text file and prints it to the POSIX standard output
  * @filename: name of the file to read
  * @letters: number of letters to read and print
  *
- * Return: the actual number of letters read and printed, or 0 on failure
+ * Return: actual number of letters it could read and print, or 0 on failure
  */
-
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-FILE *file;
+ssize_t n;
+int fd;
 char *buffer;
-ssize_t read_count, write_count;
 
-if (filename == NULL)
+if (!filename)
 return (0);
 
-file = fopen(filename, "r");
-if (file == NULL)
+buffer = malloc(sizeof(char) * letters);
+if (!buffer)
 return (0);
 
-buffer = malloc(sizeof(char) * (letters + 1));
-if (buffer == NULL)
+fd = open(filename, O_RDONLY);
+if (fd == -1)
 {
-fclose(file);
+free(buffer);
 return (0);
 }
 
-read_count = fread(buffer, sizeof(char), letters, file);
-buffer[read_count] = '\0';
-
-if (ferror(file))
+n = read(fd, buffer, letters);
+if (n == -1)
 {
 free(buffer);
-fclose(file);
+close(fd);
 return (0);
 }
 
-write_count = fwrite(buffer, sizeof(char), read_count, stdout);
+if (write(STDOUT_FILENO, buffer, n) != n)
+{
+free(buffer);
+close(fd);
+return (0);
+}
 
 free(buffer);
-fclose(file);
+close(fd);
 
-if (write_count != read_count)
-return (0);
-
-return (read_count);
+return (n);
 }
