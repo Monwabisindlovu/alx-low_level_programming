@@ -1,95 +1,96 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
- * word_count - counts the number of words in a string
- * @str: the string to count
- * Return: the number of words in the string
+ * word_count - Counts the number of words in a string
+ * @str: The input string
+ * Return: The number of words
  */
 int word_count(char *str)
 {
-int i, count = 0;
+int i, count = 0, len = 0;
 
-
-for (i = 0; str[i] != '\0'; i++)
+for (i = 0; str[i]; i++)
 {
-
-if (str[i] != ' ' && (str[i + 1] == ' ' || str[i + 1] == '\0'))
+if (str[i] != ' ')
+{
+if (len == 0)
 count++;
+len++;
 }
+else
+len = 0;
+}
+
 return (count);
 }
 
 /**
- * word_len - returns the length of a word
- * @str: the string to measure
- * Return: the length of the word
+ * free_grid - Frees a 2 dimensional grid of integers
+ * @grid: The grid to free
+ * @height: The height of the grid
  */
-int word_len(char *str)
+void free_grid(int **grid, int height)
 {
-int len = 0;
+int i;
 
+if (grid == NULL || height <= 0)
+return;
 
-while (str[len] != ' ' && str[len] != '\0')
-len++;
+for (i = 0; i < height; i++)
+free(grid[i]);
 
-return (len);
+free(grid);
 }
 
 /**
- * strtow - splits a string into words
- * @str: the string to split
- * Return: a pointer to an array of strings (words) or NULL on failure
+ * strtow - Splits a string into words
+ * @str: The input string
+ * Return: Pointer to an array of strings (words)
  */
 char **strtow(char *str)
 {
 char **words;
-int i, j, k, w, l;
-
+int i, j, k, count = 0, len = 0, word_len = 0;
 
 if (str == NULL || str[0] == '\0')
 return (NULL);
 
+count = word_count(str);
+if (count == 0)
+return (NULL);
 
-w = word_count(str);
-words = malloc(sizeof(char *) * (w + 1));
+words = malloc(sizeof(char *) * (count + 1));
 if (words == NULL)
 return (NULL);
 
-
-i = 0;
-j = 0;
-while (i < w && str[j] != '\0')
-    {
-
-while (str[j] == ' ')
-j++;
-
-
-l = word_len(str + j);
-words[i] = malloc(sizeof(char) * (l + 1));
-if (words[i] == NULL)
+for (i = 0; str[i]; i++)
 {
-
-while (i >= 0)
+if (str[i] != ' ')
 {
-free(words[i]);
-i--;
+if (len == 0)
+word_len = 0;
+len++;
+word_len++;
 }
-free(words);
+else if (len > 0)
+{
+words[k] = malloc(sizeof(char) * (word_len + 1));
+if (words[k] == NULL)
+{
+free_grid((int **)words, k);
 return (NULL);
 }
 
-
-for (k = 0; k < l; k++)
-words[i][k] = str[j + k];
-words[i][k] = '\0';
-
-
-i++;
-j += l;
+for (j = i - len; j < i; j++)
+words[k][j - (i - len)] = str[j];
+words[k][j - (i - len)] = '\0';
+k++;
+len = 0;
 }
-words[i] = NULL;
+}
 
+words[k] = NULL;
 return (words);
 }
 
