@@ -9,6 +9,9 @@
  * Return: A pointer to the allocated memory
  * If malloc fails, the function terminates with a status value of 98
  */
+#include <stdlib.h>
+#include <stdio.h>
+
 void *malloc_checked(unsigned int b)
 {
 void *ptr;
@@ -36,5 +39,6 @@ printf("%p\n", (void *)f);
 free(c);
 free(i);
 free(f);
-return (0);
+return (98);
 }
+
