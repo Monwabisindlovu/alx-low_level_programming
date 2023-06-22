@@ -6,11 +6,11 @@
  * print_all - Prints anything
  * @format: The list of types of arguments passed to the function
  *
- * Description: This function prints a variable number of arguments based on the
- *              provided format string. The format string specifies the type of
- *              each argument. It supports char (c), integer (i), float (f), and
- *              string (s) types. NULL strings are printed as (nil). The arguments
- *              are separated by commas and followed by a new line.
+ *Description: This function prints a variable number of arguments based on the
+ *provided format string. The format string specifies the type of
+ *each argument. It supports char (c), integer (i), float (f), and
+ *string (s) types. NULL strings are printed as (nil). The arguments
+ *are separated by commas and followed by a new line.
  */
 void print_all(const char * const format, ...)
 {
