@@ -6,18 +6,16 @@
  * @head: A pointer to the head of the list.
  *
  * Description: This function frees each node of a linked list and the
- *              memory allocated for the string in each node.
+ * memory allocated for the string in each node.
  */
 void free_list(list_t *head)
 {
-list_t *current;
-
+list_t *tmp;
 while (head != NULL)
 {
-current = head;
+tmp = head;
 head = head->next;
-free(current->str);
-free(current);
+free(tmp);
 }
 }
 
