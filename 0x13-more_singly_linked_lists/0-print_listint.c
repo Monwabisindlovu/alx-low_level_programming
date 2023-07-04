@@ -1,33 +1,22 @@
-#include <stdlib.h>
 #include <stdio.h>
 #include "lists.h"
 
 /**
- * main - Entry point of the program
- *
- * Return: Always 0
+ * print_listint - Prints all elements of a linked list
+ * @h: Pointer to the head of the linked list
+ * Return: Number of nodes in the linked list
  */
-int main(void)
+size_t print_listint(const listint_t *h)
 {
-listint_t *head;
-listint_t *new;
-listint_t hello = {8, NULL};
-size_t n;
+size_t count = 0;
 
-head = &hello;
-new = malloc(sizeof(listint_t));
-if (new == NULL)
+while (h != NULL)
 {
-printf("Error\n");
-return (1);
+printf("%d\n", h->n);
+count++;
+h = h->next;
 }
-new->n = 9;
-new->next = head;
-head = new;
 
-n = print_listint(head);
-printf("-> %lu elements\n", n);
-
-free(new);
-return (0);
+return (count);
 }
+
