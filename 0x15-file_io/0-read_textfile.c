@@ -1,5 +1,7 @@
-#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
 #include <stdlib.h>
+#include "main.h"
 
 /**
  * read_textfile - Reads a text file and prints it to the
@@ -11,36 +13,42 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-FILE *fp;
-char *buffer;
-ssize_t read_chars;
+char *buf;
+ssize_t file_descriptor, bytes_read, bytes_written;
 
-if (!filename)
+if (filename == NULL)
 return (0);
 
-fp = fopen(filename, "r");
-if (!fp)
+file_descriptor = open(filename, O_RDONLY);
+if (file_descriptor == -1)
 return (0);
 
-buffer = malloc(sizeof(char) * letters);
-if (!buffer)
+buf = malloc(sizeof(char) * letters);
+if (buf == NULL)
 {
-fclose(fp);
+close(file_descriptor);
 return (0);
 }
 
-read_chars = fread(buffer, sizeof(char), letters, fp);
-fclose(fp);
-
-if (read_chars == 0)
+bytes_read = read(file_descriptor, buf, letters);
+if (bytes_read == -1)
 {
-free(buffer);
+close(file_descriptor);
+free(buf);
 return (0);
 }
 
-printf("%s", buffer);
-free(buffer);
+bytes_written = write(STDOUT_FILENO, buf, bytes_read);
+if (bytes_written == -1 || bytes_written != bytes_read)
+{
+close(file_descriptor);
+free(buf);
+return (0);
+}
 
-return (read_chars);
+close(file_descriptor);
+free(buf);
+
+return (bytes_written);
 }
 
