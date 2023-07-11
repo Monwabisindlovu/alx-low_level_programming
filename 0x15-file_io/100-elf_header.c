@@ -28,11 +28,13 @@ uint16_t e_shstrndx;
 };
 
 /**
- * print_error - Prints an error message to stderr and exits with status code 98.
+ * print_error - Prints an error message to stderr and
+ * exits with status code 98.
  * @error_message: The error message to print.
  */
 void print_error(const char *error_message)
-{fprintf(stderr, "%s\n", error_message);
+{
+fprintf(stderr, "%s\n", error_message);
 exit(98);
 }
 
@@ -58,6 +60,7 @@ void print_class(uint8_t e_ident_class)
 {
 const char *class_str;
 switch (e_ident_class)
+
 {
 case 1:
 class_str = "ELF32";
@@ -68,6 +71,7 @@ break;
 default:
 class_str = "<unknown>";
 break;
+
 }
 printf("  Class:   %s\n", class_str);
 }
@@ -106,7 +110,9 @@ if (header->e_ident[EI_MAG0] != ELFMAG0 ||
 header->e_ident[EI_MAG1] != ELFMAG1 ||
 header->e_ident[EI_MAG2] != ELFMAG2 ||
 header->e_ident[EI_MAG3] != ELFMAG3)
+{
 print_error("Error: Not an ELF file");
+}
 
 printf("ELF Header:\n");
 print_magic(header->e_ident);
@@ -116,9 +122,13 @@ printf("\n");
 
 bytes_read = read(STDIN_FILENO, header, sizeof(*header));
 if (bytes_read < 0)
+{
 print_error("Error reading from file");
+}
 if (bytes_read < (ssize_t)sizeof(*header))
+{
 print_error("File too small");
+}
 }
 
 int main(void)
