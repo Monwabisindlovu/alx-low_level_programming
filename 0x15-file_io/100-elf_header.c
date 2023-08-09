@@ -1,12 +1,25 @@
 #include "main.h"
 
 /**
- * main - Display ELF header information
- * @argc: Argument count
- * @argv: Argument vector
- * Return: 0 on success, 98 on failure
+ * print_os_abi - Print OS/ABI information based on the given value
+ * @value: The value representing the OS/ABI in the ELF header
+ *
+ * This function takes a value representing the OS/ABI field in the ELF header
+ * of an executable file and prints out the corresponding OS/ABI information.
  */
 void print_os_abi(unsigned char value);
+
+/**
+ * main - Display ELF header information
+ * @argc: The number of command-line arguments
+ * @argv: An array of strings containing the command-line arguments
+ * Return: 0 on success, 98 on failure
+ *
+ * This program reads an ELF file and prints out specific information from
+ * the ELF header, such as the magic number, class, data encoding, version,
+ * OS/ABI, ABI version, type, and entry point address. It is designed to be
+ * used with ELF files to analyze and display relevant information.
+ */
 int main(int argc, char *argv[])
 {
 	int fd, i;
@@ -67,8 +80,11 @@ int main(int argc, char *argv[])
 }
 
 /**
- * print_os_abi - Print OS/ABI information based on value
- * @value: ABI value
+ * print_os_abi - Print OS/ABI information based on the given value
+ * @value: The value representing the OS/ABI in the ELF header
+ *
+ * This function takes a value representing the OS/ABI field in the ELF header
+ * of an executable file and prints out the corresponding OS/ABI information.
  */
 void print_os_abi(unsigned char value)
 {
