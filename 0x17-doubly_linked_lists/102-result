@@ -1,14 +1,68 @@
-#!/usr/bin/python3
-def is_palindrome(n):
-    return str(n) == str(n)[::-1]
+#include <stdio.h>
+#include <stdlib.h>
 
-def largest_palindrome():
-    max_palindrome = 0
-    for i in range(999, 99, -1):
-        for j in range(i, 99, -1):
-            product = i * j
-            if is_palindrome(product) and product > max_palindrome:
-                max_palindrome = product
-    return max_palindrome
+int is_palindrome(int num);
 
-print(largest_palindrome())
+/**
+ * main - Entry point
+ *
+ * Return: Always 0 (Success)
+ */
+int main(void)
+{
+int largest_palindrome = 0;
+int x, y;
+
+for (x = 999; x >= 100; x--)
+{
+for (y = 999; y >= 100; y--)
+{
+int product = x * y;
+
+if (product > largest_palindrome && is_palindrome(product))
+{
+largest_palindrome = product;
+}
+}
+}
+printf("The largest palindrome made from the product of two
+3-digit numbers is: %d\n", largest_palindrome);
+
+FILE *f_pointer;
+char *fname = "./102-result";
+
+f_pointer = fopen(fname, "w");
+if (!f_pointer)
+{
+perror("Error!");
+exit(EXIT_FAILURE);
+}
+
+fprintf(f_pointer, "%d", largest_palindrome);
+fclose(f_pointer);
+
+printf("It's been saved to the file %s in the current directory.\n", fname);
+
+return (0);
+}
+
+/**
+ * is_palindrome - Checks if a number is a palindrome
+ * @num: The number to be checked
+ *
+ * Return: 1 if num is a palindrome, 0 otherwise
+ */
+int is_palindrome(int num)
+{
+int reversed_number = 0;
+int temp = num;
+
+while (temp != 0)
+{
+reversed_number = reversed_number * 10 + temp % 10;
+temp /= 10;
+}
+
+return (num == reversed_number);
+}
+
