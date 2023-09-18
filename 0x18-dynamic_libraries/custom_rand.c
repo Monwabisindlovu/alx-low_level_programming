@@ -8,5 +8,5 @@
  */
 int rand(void)
 {
-return (8);
+return (6);
 }
