@@ -24,7 +24,8 @@ typedef struct skiplist_s
 /* Function prototypes */
 int linear_search(int *array, size_t size, int value);
 int binary_search(int *array, size_t size, int value);
-void print_array(int *array, size_t left, size_t right);
+void print_array(const int *array, size_t size);
+void print_array_range(const int *array, size_t left, size_t right);
 void print_skiplist(const skiplist_t *list);
 void free_skiplist(skiplist_t *list);
 listint_t *create_list(int *array, size_t size);
