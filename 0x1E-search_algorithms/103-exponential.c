@@ -3,10 +3,11 @@
 #include "search_algos.h"
 
 /**
- * exponential_search - Searches for a value in a sorted array
- * using Exponential Search
+ * _binary_search - Searches for a value in a sorted array
+ * using Binary Search
  * @array: Pointer to the first element of the array
- * @size: Number of elements in the array
+ * @left: The left index of the search range
+ * @right: The right index of the search range
  * @value: Value to search for
  *
  * Return: Index of the first occurrence of the value,
@@ -38,14 +39,14 @@ int _binary_search(int *array, size_t left, size_t right, int value)
 	return (-1);
 }
 /**
- * binary_search - Searches for a value in a sorted array using Binary Search
+ * exponential_search - Searches for a value in a sorted array
+ * using Exponential Search
  * @array: Pointer to the first element of the array
- * @low: The low index of the search range
- * @high: The high index of the search range
+ * @size: Number of elements in the array
  * @value: Value to search for
  *
  * Return: Index of the first occurrence of the value,
- * or -1 if not found
+ * or -1 if not found or array is NULL
  */
 int exponential_search(int *array, size_t size, int value)
 {
